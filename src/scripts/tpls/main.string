@@ -1,0 +1,108 @@
+
+
+ <div class="main-containter ">
+   <div class="row">
+   <div class=" col-md-12 col-lg-12 ">
+       <div class=" header panel panel-default">
+           <div  class="panel-body">
+               <h3 >您好！欢迎进入好乐买管理系统</h3>
+           </div>
+       </div>
+       <div class="tR">
+          <!-- <p>退出</p>-->
+       </div>
+   </div>
+</div>
+
+   <div class="content row">
+             <div class=" contenL col-sm-2 col-md-2 col-lg-2">
+               <div class="panel-group" id="accordion">
+                   <div class="panel panel-default">
+                       <div class="panel-heading">
+                           <h4 class="panel-title">
+                               <a data-toggle="collapse" data-parent="#accordion"
+                                  href="#collapseOne">
+                      1`              数据管理
+                               </a>
+                           </h4>
+                       </div>
+                       <div id="collapseOne" class="panel-collapse collapse in">
+                         <div class="panel-body">
+                             <p ui-sref="data"> data</p>
+                             <p> 第二页数据</p>
+                              <p> 第三页数据</p>
+                              <p> 第四页数据</p>
+                          </div>
+                       </div>
+                   </div>
+                   <div class="panel panel-default">
+                       <div class="panel-heading">
+                           <h4 class="panel-title">
+                               <a data-toggle="collapse" data-parent="#accordion"
+                                href="#collapseTwo">
+                                   analytics
+                               </a>
+                           </h4>
+                       </div>
+                       <div id="collapseTwo" class="panel-collapse collapse">
+                           <div class="panel-body">
+                               <p ui-sref="analytics"> analytics</p>
+                               <p> 第二页数据</p>
+                               <p> 第三页数据</p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="panel panel-default">
+                       <div class="panel-heading">
+                           <h4 class="panel-title">
+                               <a data-toggle="collapse" data-parent="#accordion"
+                                 href="#collapseThree"  >
+                                  tasks
+                               </a>
+                           </h4>
+                       </div>
+                       <div id="collapseThree" class="panel-collapse collapse">
+                           <div class="panel-body">
+                               <p ui-sref="data"> 第一页数据</p>
+                               <p> 第二页数据</p>
+                               <p> 第三页数据</p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="panel panel-default">
+                       <div class="panel-heading">
+                           <h4 class="panel-title">
+                               <a data-toggle="collapse" data-parent="#accordion"
+                                  href="#collapseFour">
+                                   数据管理
+                               </a>
+                           </h4>
+                       </div>
+                       <div id="collapseFour" class="panel-collapse collapse">
+                           <div class="panel-body">
+                               <p> 第一页数据</p>
+                               <p> 第二页数据</p>
+                               <p> 第三页数据</p>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+             </div>
+               <!-- <div>
+                  <p>
+                     own
+                  </p>
+               </div>
+                  <a ui-sref="analytics"> analytics</a>
+                  <a ui-sref="tasks"> tasks</a>
+                  <a ui-sref="data"> data</a> -->
+
+
+
+             <div class="col-sm-10 col-md-10 col-lg-10">
+
+                  <ui-view></ui-view>
+             </div>
+     </div>
+
+</div>

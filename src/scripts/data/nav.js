@@ -1,0 +1,39 @@
+function store(){
+     this.nav = [
+         {
+           title:"Tasks",
+           little:[
+               "UI Features",
+               "Forms",
+               "Tables",
+               "Button"
+           ]},
+           {
+              title:"Features",
+              little:[
+                  "Notifications",
+                  "data",
+                  "anytical",
+                  "analytics"
+              ]
+           },
+           {
+              title:"Features",
+              little:[
+                  "Notifications",
+                  "data",
+                  "anytical",
+                  "analytics"
+              ]
+           },
+           {
+              title:"Features",
+              little:[
+                  "Notifications",
+                  "data",
+                  "anytical",
+                  "analytics"
+              ]
+           }
+     ]
+}
