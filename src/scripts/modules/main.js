@@ -3,6 +3,9 @@
 
 var  strTpl = require("../tpls/main.string");
 var  commonUtil = require("../utils/common.util.js");
+var store= require('../data/nav.js');
+
+
 
 commonUtil.render(strTpl);
 
@@ -57,12 +60,18 @@ myapp.config(['$stateProvider',function($stateProvider){
 }]);
 
    myapp.factory('homeStore',function(){
-          var storeData=new store();
-          return storeData.nav;
+          var myStore = store.nav;
+          return myStore;
+
    })
+   myapp.controller('mainhome',['$scope','homeStore',function($scope,homestore){
+               $scope.contentL=homestore;
+
+   }])
 
    myapp.controller('homeController',['$scope','$state','homeStore',function($scope,$state,homestore){
         $scope.contentL=homestore;
+
          $scope.message='home page';
     }]);
 
