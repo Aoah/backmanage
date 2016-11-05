@@ -1,88 +1,60 @@
 // import strTpl from "../tpls/main.string";
 // import commonUtil from  "../utils/common.util.js";
 
-var  strTpl = require("../tpls/main.string");
-var  commonUtil = require("../utils/common.util.js");
-var store= require('../data/nav.js');
-
-
+var strTpl = require("../tpls/main.string");
+var commonUtil = require("../utils/common.util.js");
 
 commonUtil.render(strTpl);
 
-var myapp=angular.module('myApp',['ui.router']);
+var myapp = angular.module('myApp', ['ui.router','index','home','analytics','task','data']);
 
 
-myapp.config(function($urlRouterProvider){
-     $urlRouterProvider.otherwise('/home');
-})
-myapp.config(function($urlMatcherFactoryProvider){
-     $urlMatcherFactoryProvider.caseInsensitive(false);
+myapp.config(function($urlRouterProvider) {
+    $urlRouterProvider.otherwise('/home');
 })
 
+myapp.config(function($urlMatcherFactoryProvider) {
+    $urlMatcherFactoryProvider.caseInsensitive(false);
+})
 
-myapp.config(['$stateProvider',function($stateProvider){
+myapp.config(['$stateProvider', function($stateProvider) {
     $stateProvider
-       .state('home',{
-            url:'/home',
-            templateUrl:'/src/scripts/tpls/ui-router/home.html',
-            controller:'homeController',
+        .state('home', {
+            url: '/home',
+            templateUrl: 'http://www.okbuy.com:8080/src/scripts/tpls/ui-router/home.html',
+            controller: 'homeController',
 
-            date:{
-
-            }
-       })
-       .state('analytics',{
-            url:'/analytics',
-            templateUrl:'/src/scripts/tpls/ui-router/analytics.html',
-            controller:'analyticsController',
-
-            data:{
+            date: {
 
             }
-       })
-       .state('tasks',{
-             url:'/tasks',
-             templateUrl:'/src/scripts/tpls/ui-router/tasks.html',
-             controller:'tasksController',
+        })
+        .state('analytics', {
+            url: '/analytics',
+            templateUrl: 'http://www.okbuy.com:8080/src/scripts/tpls/ui-router/analytics.html',
+            controller: 'analyticsController',
+            data: {
 
-             data:{
+            }
+        })
+        .state('tasks', {
+            url: '/tasks',
+            templateUrl: 'http://www.okbuy.com:8080/src/scripts/tpls/ui-router/tasks.html',
+            controller: 'tasksController',
+            data: {
 
-             }
-       })
-       .state('data',{
-              url:'/data',
-              templateUrl:'/src/scripts/tpls/ui-router/data.html',
-              controller:'dataControler',
-
-              data:{
-              }
-       })
+            }
+        })
+        .state('data', {
+            url: '/data',
+            templateUrl: 'http://www.okbuy.com:8080/src/scripts/tpls/ui-router/data.html',
+            controller: 'dataController',
+            data: {}
+        })
 }]);
 
-   myapp.factory('homeStore',function(){
-          var myStore = store.nav;
-          return myStore;
 
-   })
-   myapp.controller('mainhome',['$scope','homeStore',function($scope,homestore){
-               $scope.contentL=homestore;
 
-   }])
-
-   myapp.controller('homeController',['$scope','$state','homeStore',function($scope,$state,homestore){
-        $scope.contentL=homestore;
-
-         $scope.message='home page';
-    }]);
-
-   myapp.controller('analyticsController',['$scope','$state',function($scope,$state){
-           $scope.message='anallyticsController';
-   }]);
-
-   myapp.controller('tasksController',['$scope','$state',function($scope,$state){
-           $scope.message='taskController';
-   }]);
-
-   myapp.controller('dataControler',['$scope','$state',function($scope,$state){
-          $scope.message='dateController';
-   }]);
+// myapp.controller('mainhome', ['$scope', 'homeStore', function($scope, homestore) {
+//     $scope.contentL = homestore;
+//
+// }])

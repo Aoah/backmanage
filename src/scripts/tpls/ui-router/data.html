@@ -1,5 +1,67 @@
 <div class="dataMain">
-  <p>
-       {{message}}
-  </p>
+
+    <input ng-click="add1()" class="btn-sm btn-primary" type="button" value="添加" id="add2"/>
+       <input ng-click="remove()" class="btn-sm btn-success" type="button" value="删除" id="remove"/>
+       <input ng-click="change()" class="btn-sm btn-danger" type="button" value="修改" id="change"/>
+       <input ng-click="update()" class="btn-sm btn-info" type="button" value="更新" id="upd"/>
+       <br/>
+       <br/>
+       <form  style="display: none" id="allform" role="form" class="form-horizontal" action="http://localhost:8081/addData_post"
+             method="post">
+           <div class="form-group col-sm-6">
+               <label for="id1" class="col-sm-2 control-label">标识</label>
+               <div class="col-sm-10">
+                   <input ng-module="id" class="form-control"  type="text" id="id1">
+               </div>
+           </div>
+           <div class="form-group col-sm-6">
+               <label for="id1" class="col-sm-2 control-label">图片源</label>
+               <div class="col-sm-10">
+                   <input ng-module="url" class="form-control" type="text" id="id2">
+               </div>
+           </div>
+           <div class="form-group col-sm-6">
+               <label for="id1"  class="col-sm-2 control-label">价格</label>
+               <div class="col-sm-10">
+                   <input ng-module="price" class="form-control" type="text" id="id3">
+               </div>
+           </div>
+           <div class="form-group col-sm-6">
+               <label for="id1" class="col-sm-2 control-label">描述</label>
+               <div class="col-sm-10">
+                   <input ng-module="dec" class="form-control" type="text" id="id4">
+               </div>
+           </div>
+           <input ng-click="add()" class="col-md-2 col-md-offset-5 btn-lg btn-warning" type="button" value="确定" id="add">
+       </form>
+
+       <table class="table table-hover" id="out">
+           <thead>
+           <tr>
+               <th><input ng-model="confirmedall"  id="allCheck" type="checkbox" value="全选">全选</th>
+               <th>标识</th>
+               <th>图片源</th>
+               <th>价格</th>
+               <th>描述</th>
+           </tr>
+           </thead>
+           <tbody id="bbb">
+                <tr ng-repeat="items in data">
+                          <td>
+                            <input  ng-checked="confirmedall" type="checkbox"  value>
+                          </td>
+                          <td>{{items.id}}</td>
+                          <td>{{items.url}}</td>
+                          <td>{{items.price}}</td>
+                          <td> {{items.dec}}</td>
+                </tr>
+
+           </tbody>
+       </table>
+
+      <script  src="../../my.js"></script>
+      <script>
+          console.log("adfadgadf");
+           my();
+      </script>
 </div>

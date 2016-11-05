@@ -20,10 +20,11 @@
                    <div ng-repeat="items in contentL" class="panel panel-default">
                        <div class="panel-heading">
                            <h4 class="panel-title">
-                               <a data-toggle="collapse" data-parent="#accordion"
+                               <a ng-click="jiantou($event)" data-toggle="collapse" data-parent="#accordion"
                                   href="#{{items.href}}">
                                        {{items.title}}
                                </a>
+                               <img ng-src="http://www.okbuy.com/images/jiantou2.png"/>
                            </h4>
                        </div>
                        <div id="{{items.href}}" class="panel-collapse collapse">
@@ -32,57 +33,7 @@
                           </div>
                        </div>
                    </div>
-                   <!-- <div class="panel panel-default">
-                       <div class="panel-heading">
-                           <h4 class="panel-title">
-                               <a data-toggle="collapse" data-parent="#accordion"
-                                href="#collapseTwo">
-                                      analytics
-                               </a>
-                           </h4>
-                       </div>
-                       <div id="collapseTwo" class="panel-collapse collapse">
-                           <div class="panel-body">
-                               <p ui-sref="analytics"> analytics</p>
-                               <p> 第二页数据</p>
-                               <p> 第三页数据</p>
-                           </div>
-                       </div>
-                   </div>
-                   <div class="panel panel-default">
-                       <div class="panel-heading">
-                           <h4 class="panel-title">
-                               <a data-toggle="collapse" data-parent="#accordion"
-                                 href="#collapseThree"  >
-                                  tasks
-                               </a>
-                           </h4>
-                       </div>
-                       <div id="collapseThree" class="panel-collapse collapse">
-                           <div class="panel-body">
-                               <p ui-sref="data"> 第一页数据</p>
-                               <p> 第二页数据</p>
-                               <p> 第三页数据</p>
-                           </div>
-                       </div>
-                   </div>
-                   <div class="panel panel-default">
-                       <div class="panel-heading">
-                           <h4 class="panel-title">
-                               <a data-toggle="collapse" data-parent="#accordion"
-                                  href="#collapseFour">
-                                   manage
-                               </a>
-                           </h4>
-                       </div>
-                       <div id="collapseFour" class="panel-collapse collapse">
-                           <div class="panel-body">
-                               <p> 第一页数据</p>
-                               <p> 第二页数据</p>
-                               <p> 第三页数据</p>
-                           </div>
-                       </div>
-                   </div> -->
+
                </div>
              </div>
 

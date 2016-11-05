@@ -1,37 +1,44 @@
-html,body{
-   background:url('/images/heng.png') repeat;
-    width:100%;
-    height:100%;
+body,
+html {
+    background: url('/images/heng.png') repeat;
+    width: 100%;
+    height: 100%;
 }
-.main-containter{
-    width:100%;
-    height:100%;
-    .header{
-      background:black;
-       color:white;
-        height:20%;
-        width:100%;
-    }
-    .content{
-      height: 80%;
-      width:100%;
-      .contenL{
-            background:black;
-            height:100%;
-            .panel{
+.main-containter {
 
-              border:0;
-                background:black;
-                color:white;
-                .panel-heading{
-                  color:white;
-                    background:black;
+    width: 100%;
+    height: 100%;
+    .header {
+        background: black;
+        color: white;
+        height: 20%;
+        width: 100%;
+    }
+    .content {
+
+        .contenL {
+
+
+            .panel {
+
+
+
+                .panel-heading {
+                       h4{
+
+                           img{
+                               height: 16px;
+                           }
+                       }
+
+
                 }
-
+                .panel-body {
+                    p {
+                        cursor: pointer;
+                    }
+                }
             }
-
-      }
-
+        }
     }
-
 }
