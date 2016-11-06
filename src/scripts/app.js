@@ -5,6 +5,8 @@
 
 //指令
   require('./directive/chart.js');
+  require('./directive/chart2.js')
+  require('./directive/chart3.js')
 
 //factory
   require('./factory/contentL.js');

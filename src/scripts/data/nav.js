@@ -1,7 +1,8 @@
 var store = {
     nav: [{
-        title: "Tasks",
+        title: "Data",
         href: 'collapseOne',
+
         lref: [
           {
              little:  "UI Features",
@@ -14,32 +15,33 @@ var store = {
              little:  "Tables",
              ref:'tasks',
           },{
-              little:"Button",
-              ref:"data"
+              little:"Data",
+              ref:"data({id:0})"
           }
         ]
     }, {
         title: "Features",
-        href: 'collapseTwo',
+        href: 'data',
         lref: [
           {
              little:  "Notifications",
-             ref:"home"
+             ref:"data({id:0})"
           },
           {
              little:  "data",
-             ref:  "analytics",
+             ref:  "data({id:1})",
           },{
              little:  "anytical",
-             ref:'tasks',
+             ref:'data({id:2})',
           },{
               little:"analytics",
-              ref:"data"
+              ref:"data({id:3})"
           }
         ]
     }, {
-        title: "Features",
+        title: "Notifications",
         href: 'collapseThree',
+
         lref: [
           {
              little:  "Notifications",
@@ -58,8 +60,9 @@ var store = {
         ]
 
     }, {
-        title: "Features",
+        title: "Shoes",
         href: 'collapsethuo',
+      
         lref: [
           {
              little:  "Notifications",

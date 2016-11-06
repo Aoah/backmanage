@@ -5,7 +5,13 @@
        <input ng-click="change()" class="btn-sm btn-danger" type="button" value="修改" id="change"/>
        <input ng-click="update()" class="btn-sm btn-info" type="button" value="更新" id="upd"/>
        <br/>
-       <br/>
+       <form class="navbar-form navbar-left" role="search">
+         <div class="form-group">
+           <input ng-model="searchText" type="text" class="form-control" placeholder="Search">
+         </div>
+         <button type="submit" class="btn btn-default">Submit</button>
+       </form>
+       <br/><br/><br/><br/>
        <form  style="display: none" id="allform" role="form" class="form-horizontal" action="http://localhost:8081/addData_post"
              method="post">
            <div class="form-group col-sm-6">
@@ -46,9 +52,12 @@
            </tr>
            </thead>
            <tbody id="bbb">
-                <tr ng-repeat="items in data">
+                <tr  ng-repeat="items in data | filter:searchText" >
                           <td>
-                            <input  ng-checked="confirmedall" type="checkbox"  value>
+                            <input  type="checkbox"
+                             ng-checked="confirmedall"
+                             ng-model="choose"
+                               ng-change="backfn(this);">
                           </td>
                           <td>{{items.id}}</td>
                           <td>{{items.url}}</td>
@@ -59,9 +68,10 @@
            </tbody>
        </table>
 
-      <script  src="../../my.js"></script>
-      <script>
-          console.log("adfadgadf");
-           my();
-      </script>
+
 </div>
+<ul class="pagination">
+	<li ng-click="lastye()"><a >&laquo;</a></li>
+	<li ng-click="changeye($index)" ng-repeat="item in pagination "><a href="">{{item}}</a></li>
+	<li ng-click="nextye()"><a href="">&raquo;</a></li>
+</ul>

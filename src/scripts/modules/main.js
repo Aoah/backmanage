@@ -16,7 +16,6 @@ myapp.config(function($urlRouterProvider) {
 myapp.config(function($urlMatcherFactoryProvider) {
     $urlMatcherFactoryProvider.caseInsensitive(false);
 })
-
 myapp.config(['$stateProvider', function($stateProvider) {
     $stateProvider
         .state('home', {
@@ -45,9 +44,10 @@ myapp.config(['$stateProvider', function($stateProvider) {
             }
         })
         .state('data', {
-            url: '/data',
+            url: '/data{id}',
             templateUrl: 'http://www.okbuy.com:8080/src/scripts/tpls/ui-router/data.html',
             controller: 'dataController',
+
             data: {}
         })
 }]);

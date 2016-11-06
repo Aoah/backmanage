@@ -16,15 +16,15 @@
 
    <div class="content row">
              <div class="contenL col-xs-2 col-sm-2 col-md-2 col-lg-2">
-               <div ng-controller="mainhome" class="panel-group" id="accordion">
+               <div ng-controller="mainhome" class="panel-group" id="accordion" >
                    <div ng-repeat="items in contentL" class="panel panel-default">
                        <div class="panel-heading">
-                           <h4 class="panel-title">
-                               <a ng-click="jiantou($event)" data-toggle="collapse" data-parent="#accordion"
-                                  href="#{{items.href}}">
+                           <h4  ng-click="jiantou($index)" class="panel-title" style="position:relative">
+                               <a  data-toggle="collapse" data-parent="#accordion"
+                                  href="#{{items.href}}" >
                                        {{items.title}}
                                </a>
-                               <img ng-src="http://www.okbuy.com/images/jiantou2.png"/>
+                               <img style="position:absolute;right:0" ng-src="http://www.okbuy.com/images/jiantou{{imagestate[$index]}}.png"/>
                            </h4>
                        </div>
                        <div id="{{items.href}}" class="panel-collapse collapse">
