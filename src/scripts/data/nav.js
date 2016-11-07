@@ -55,14 +55,14 @@ var store = {
              ref:'tasks',
           },{
               little:"analytics",
-              ref:"data"
+              ref:"data({id:3})"
           }
         ]
 
     }, {
         title: "Shoes",
         href: 'collapsethuo',
-      
+
         lref: [
           {
              little:  "Notifications",
@@ -76,7 +76,7 @@ var store = {
              ref:'tasks',
           },{
               little:"analytics",
-              ref:"data"
+              ref:"data({id:3})"
           }
         ]
     }]

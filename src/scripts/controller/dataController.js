@@ -11,16 +11,50 @@ data.controller('dataController', ['$scope', '$rootScope', '$state', '$http', '$
     $scope.currentIn = 0;
     // 全选的 功能实现
     $scope.confirmedall = false;
-
     var alldata = [];
     $scope.data = [];
-
     $scope.confirmed = true;
+     $rootScope.ye=0;
+
+  //***************************
+  // 根据路由传来的不同id 获取不同的页面内容
+     if ($stateParams.id + 1) {
+         $rootScope.ye = $stateParams.id;
+     } else {
+
+         $rootScope.ye = 0;
+     }
+    //  **************************
+    $http({
+            url: 'http://www.okbuy.com:8080/allDate?pageCount=' + $rootScope.ye,
+            params: {},
+            method: 'get'
+        })
+        .then(function(res) {
+            alldata = res.data.slice(0);
+            console.log(alldata.length);
+            for (var m = 1; m < parseInt(alldata.length / 12); m++) {
+                $scope.pagination.push(m);
+            }
+            if (alldata.length % 11 && alldata.length > 11) {
+                $scope.pagination.push(m);
+            }
+
+            $scope.data = alldata.slice(0, 11);
+            // $scope.data = res.data;
+            console.log(res);
+        }, function(error) {
+            console.log(error);
+        })
+        //      *********************
+
+
+
 
     // checkbox 点击后进行判断的回调函数
     $scope.backfn = function(chk) {
         if (chk.choose) {
-            $("form input:eq(1)").val(chk.items.id),
+                $("form input:eq(1)").val(chk.items.id),
                 $("form input:eq(3)").val(chk.items.price),
                 $("form input:eq(2)").val(chk.items.url),
                 $("form input:eq(4)").val(chk.items.dec)
@@ -30,40 +64,36 @@ data.controller('dataController', ['$scope', '$rootScope', '$state', '$http', '$
             $scope.arr.splice($scope.arr.indexOf(chk.items.id));
         }
     }
-    console.log($stateParams);
-    if($stateParams.id+1){
-    $rootScope.ye = $stateParams.id;
-  }
-    else{
-        $rootScope.ye = 0;
-    }
+
+
 
     $scope.add1 = function() {
         $("#allform").slideToggle();
-    }
-    $http({
-            url: 'http://www.okbuy.com:8080/allDate?pageCount=' + $rootScope.ye,
-            params: {},
-            method: 'get'
-        })
-        .then(function(res) {
-            alldata = res.data.slice(0);
-            for (var m = 1; m < parseInt(alldata.length / 12); m++) {
-                $scope.pagination.push(m);
-            }
-            if (alldata.length % 12 && alldata.length > 12) {
-                $scope.pagination.push(m);
-            }
 
-            $scope.data = alldata.slice(0, 12);
-            // $scope.data = res.data;
-            console.log(res);
-        }, function(error) {
-            console.log(error);
-        })
-        //      *********************
+        function uuid() {
+            console.log("uuid");
+            var s = [];
+            var hexDigits = "0123456789abcdef";
+            for (var i = 0; i < 36; i++) {
+                s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+            }
+            s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
+            s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
+            s[8] = s[13] = s[18] = s[23] = "-";
+
+            var uuid = s.join("");
+            return uuid;
+        }
+        $("form input:eq(1)").val(uuid());
+        $("form input:eq(3)").val(""),
+            $("form input:eq(2)").val(""),
+            $("form input:eq(4)").val("")
+    }
+
+
     $scope.add = function() {
         $("#allform").slideToggle();
+
         var data = {
             id: $("form input:eq(1)").val(),
             price: $("form input:eq(3)").val(),
@@ -71,6 +101,7 @@ data.controller('dataController', ['$scope', '$rootScope', '$state', '$http', '$
             dec: $("form input:eq(4)").val()
         }
         $scope.data.push(data);
+        alldata.push(data);
         console.log($("form input:eq(1)").val());
         $.ajax({
             url: 'http://www.okbuy.com:8080/addData_post?pageCount=' + $rootScope.ye,
@@ -105,8 +136,10 @@ data.controller('dataController', ['$scope', '$rootScope', '$state', '$http', '$
 
         }
 
-        console.log("tempArr  " + tempArr.length);
+        alldata=alldata.slice(0,$scope.currentIn*11).concat(tempArr,alldata.slice(($scope.currentIn+1)*11))
+
         $scope.data = tempArr;
+
 
         $.ajax({
                 url: "http://www.okbuy.com:8080/removeData_post?pageCount=" + $rootScope.ye,
@@ -158,16 +191,20 @@ data.controller('dataController', ['$scope', '$rootScope', '$state', '$http', '$
             })
     }
 
+    //  分页显示不同的数据
+
     $scope.changeye = function(index) {
         $scope.currentIn = index;
-        $scope.data = alldata.slice(index * 10, index + 11);
+        $scope.data = alldata.slice(index * 11, (index+1)*11);
     }
     $scope.lastye = function() {
         if ($scope.currentIn == 0) {
 
         } else {
+
             $scope.currentIn--;
-            $scope.data = alldata.slice($scope.currentIn * 10, $scope.currentIn + 11);
+            $scope.data = alldata.slice($scope.currentIn * 11, ($scope.currentIn+1)*11);
+
         }
     }
     $scope.nextye = function() {
@@ -175,7 +212,7 @@ data.controller('dataController', ['$scope', '$rootScope', '$state', '$http', '$
 
         } else {
             $scope.currentIn++;
-            $scope.data = alldata.slice($scope.currentIn * 10, $scope.currentIn + 11);
+            $scope.data = alldata.slice($scope.currentIn * 11, ($scope.currentIn+1)*11);
         }
     }
 }]);

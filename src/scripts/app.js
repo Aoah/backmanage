@@ -10,6 +10,7 @@
 
 //factory
   require('./factory/contentL.js');
+  require('./factory/dataOperations.js');
 
 
 //controller
