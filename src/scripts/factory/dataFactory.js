@@ -1,10 +1,10 @@
 
-   var  dataFactory =angular.module("datafactory",[]);
+   var  dataFactory =angular.module("data-factory",[]);
 
-   dataFactory.factory('datafactory',function(){
+    var temp  = require("./dataOperations.js");
 
-            var operation = new dataOperation();
+   dataFactory.factory('datafac',function($scope){
 
-            return operation;
+        return  new temp(i);
 
    })

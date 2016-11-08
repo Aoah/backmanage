@@ -10,7 +10,8 @@
 
 //factory
   require('./factory/contentL.js');
-  require('./factory/dataOperations.js');
+  // require('./factory/dataOperations.js');
+  require('./factory/dataFactory.js');
 
 
 //controller

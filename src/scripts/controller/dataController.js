@@ -1,10 +1,11 @@
-var data = angular.module('data', []);
+var data = angular.module('data', ['data-factory']);
 
+  var temp  = require("../factory/dataOperations.js");
 
 data.controller('dataController', ['$scope', '$rootScope', '$state', '$http', '$stateParams', function($scope, $rootScope, $state, $http, $stateParams) {
 
 
-    console.log();
+
 
     $scope.arr = [];
     $scope.pagination = [0]
@@ -12,40 +13,63 @@ data.controller('dataController', ['$scope', '$rootScope', '$state', '$http', '$
     // 全选的 功能实现
     $scope.confirmedall = false;
     var alldata = [];
-    $scope.data = [];
+    $scope.data = [1,2];
     $scope.confirmed = true;
-     $rootScope.ye=0;
+    $scope.ye=0;
+   var operation= new  temp( $scope.ye,alldata,$scope.pagination,$scope.data,$scope);
 
+   operation.init();
+   let ffff=$scope;
+
+
+       console.log(ffff);
+
+
+        // $scope.$apply();
+ // $state.reload();
+
+  //  console.log(ffff);
+   //
+  //     console.log($scope.data);
+
+
+    // console.log($scope);
+    // console.log($scope.data)
   //***************************
   // 根据路由传来的不同id 获取不同的页面内容
      if ($stateParams.id + 1) {
-         $rootScope.ye = $stateParams.id;
+         $scope.ye = $stateParams.id;
      } else {
 
-         $rootScope.ye = 0;
+         $scope.ye = 0;
      }
-    //  **************************
-    $http({
-            url: 'http://www.okbuy.com:8080/allDate?pageCount=' + $rootScope.ye,
-            params: {},
-            method: 'get'
-        })
-        .then(function(res) {
-            alldata = res.data.slice(0);
-            console.log(alldata.length);
-            for (var m = 1; m < parseInt(alldata.length / 12); m++) {
-                $scope.pagination.push(m);
-            }
-            if (alldata.length % 11 && alldata.length > 11) {
-                $scope.pagination.push(m);
-            }
 
-            $scope.data = alldata.slice(0, 11);
-            // $scope.data = res.data;
-            console.log(res);
-        }, function(error) {
-            console.log(error);
-        })
+    //  var operation= datafactory($scope.ye,alldata,$scope.pagination,$scope.data);
+     //
+    //  console.log(operation);
+    //  operation.init();
+    //  **************************
+    // $http({
+    //         url: 'http://www.okbuy.com:8080/allDate?pageCount=' + $scope.ye,
+    //         params: {},
+    //         method: 'get'
+    //     })
+    //     .then(function(res) {
+    //         alldata = res.data.slice(0);
+    //         console.log(alldata.length);
+    //         for (var m = 1; m < parseInt(alldata.length / 12); m++) {
+    //             $scope.pagination.push(m);
+    //         }
+    //         if (alldata.length % 11 && alldata.length > 11) {
+    //             $scope.pagination.push(m);
+    //         }
+    //
+    //         $scope.data = alldata.slice(0, 11);
+    //         // $scope.data = res.data;
+    //         console.log(res);
+    //     }, function(error) {
+    //         console.log(error);
+    //     })
         //      *********************
 
 
@@ -68,6 +92,7 @@ data.controller('dataController', ['$scope', '$rootScope', '$state', '$http', '$
 
 
     $scope.add1 = function() {
+        console.log($scope);
         $("#allform").slideToggle();
 
         function uuid() {
@@ -104,7 +129,7 @@ data.controller('dataController', ['$scope', '$rootScope', '$state', '$http', '$
         alldata.push(data);
         console.log($("form input:eq(1)").val());
         $.ajax({
-            url: 'http://www.okbuy.com:8080/addData_post?pageCount=' + $rootScope.ye,
+            url: 'http://www.okbuy.com:8080/addData_post?pageCount=' + $scope.ye,
             data: data,
             type: 'post',
         }).then(function(res) {
@@ -142,7 +167,7 @@ data.controller('dataController', ['$scope', '$rootScope', '$state', '$http', '$
 
 
         $.ajax({
-                url: "http://www.okbuy.com:8080/removeData_post?pageCount=" + $rootScope.ye,
+                url: "http://www.okbuy.com:8080/removeData_post?pageCount=" + $scope.ye,
                 data: {
                     data: arr
                 },
@@ -165,8 +190,11 @@ data.controller('dataController', ['$scope', '$rootScope', '$state', '$http', '$
     }
     $scope.change = function() {
         $("#allform").slideToggle();
+
+
         $scope.data = $scope.data.filter(function(item, index, array) {
             return !($scope.arr[0] == item.id);
+
         })
 
         var arr = [];
@@ -175,7 +203,7 @@ data.controller('dataController', ['$scope', '$rootScope', '$state', '$http', '$
         $scope.data.shift(data);
 
         $.ajax({
-                url: "http://www.okbuy.com:8080/removeData_post?pageCount=" + $rootScope.ye,
+                url: "http://www.okbuy.com:8080/removeData_post?pageCount=" + $scope.ye,
                 data: {
                     data: arr
                 },
@@ -213,6 +241,7 @@ data.controller('dataController', ['$scope', '$rootScope', '$state', '$http', '$
         } else {
             $scope.currentIn++;
             $scope.data = alldata.slice($scope.currentIn * 11, ($scope.currentIn+1)*11);
+
         }
     }
 }]);
