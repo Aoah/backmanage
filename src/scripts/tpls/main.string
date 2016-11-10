@@ -24,7 +24,7 @@
                                   href="#{{items.href}}" >
                                        {{items.title}}
                                </a>
-                               <img style="position:absolute;right:0" ng-src="http://www.okbuy.com/images/jiantou{{imagestate[$index]}}.png"/>
+                               <img style="position:absolute;right:0" ng-src="http://localhost/images/jiantou{{imagestate[$index]}}.png"/>
                            </h4>
                        </div>
                        <div id="{{items.href}}" class="panel-collapse collapse">

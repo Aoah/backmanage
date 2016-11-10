@@ -20,7 +20,7 @@ myapp.config(['$stateProvider', function($stateProvider) {
     $stateProvider
         .state('home', {
             url: '/home',
-            templateUrl: 'http://www.okbuy.com:8080/src/scripts/tpls/ui-router/home.html',
+            templateUrl: 'http://localhost:8080/src/scripts/tpls/ui-router/home.html',
             controller: 'homeController',
 
             date: {
@@ -29,7 +29,7 @@ myapp.config(['$stateProvider', function($stateProvider) {
         })
         .state('analytics', {
             url: '/analytics',
-            templateUrl: 'http://www.okbuy.com:8080/src/scripts/tpls/ui-router/analytics.html',
+            templateUrl: 'http://localhost:8080/src/scripts/tpls/ui-router/analytics.html',
             controller: 'analyticsController',
             data: {
 
@@ -37,7 +37,7 @@ myapp.config(['$stateProvider', function($stateProvider) {
         })
         .state('tasks', {
             url: '/tasks',
-            templateUrl: 'http://www.okbuy.com:8080/src/scripts/tpls/ui-router/tasks.html',
+            templateUrl: 'http://localhost:8080/src/scripts/tpls/ui-router/tasks.html',
             controller: 'tasksController',
             data: {
 
@@ -45,7 +45,7 @@ myapp.config(['$stateProvider', function($stateProvider) {
         })
         .state('data', {
             url: '/data{id}',
-            templateUrl: 'http://www.okbuy.com:8080/src/scripts/tpls/ui-router/data.html',
+            templateUrl: 'http://localhost:8080/src/scripts/tpls/ui-router/data.html',
             controller: 'dataController',
 
             data: {}
