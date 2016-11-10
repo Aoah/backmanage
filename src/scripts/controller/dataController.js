@@ -4,9 +4,6 @@ var data = angular.module('data', ['data-factory']);
 
 data.controller('dataController', ['$scope', '$rootScope', '$state', '$http', '$stateParams', function($scope, $rootScope, $state, $http, $stateParams) {
 
-
-
-
     $scope.arr = [];
     $scope.pagination = [0]
     $scope.currentIn = 0;
@@ -21,8 +18,7 @@ data.controller('dataController', ['$scope', '$rootScope', '$state', '$http', '$
    operation.init();
    let ffff=$scope;
 
-
-       console.log(ffff);
+      console.log(ffff);
 
 
         // $scope.$apply();
