@@ -16,4 +16,4 @@
 # /angualr_backmanage/backserver/ 目录下   启动 node server.js
 
 
-主要实现功能  增，删，改，查，绘图
+#主要实现功能  增，删，改，查，绘图
