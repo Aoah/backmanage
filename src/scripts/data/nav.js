@@ -2,7 +2,6 @@ var store = {
     nav: [{
         title: "Data",
         href: 'collapseOne',
-
         lref: [
           {
              little:  "UI Features",
@@ -21,7 +20,7 @@ var store = {
         ]
     }, {
         title: "Features",
-        href: 'data',
+        href: 'tasks',
         lref: [
           {
              little:  "Notifications",

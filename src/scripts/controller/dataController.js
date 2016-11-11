@@ -191,6 +191,7 @@ var data = angular.module('data', ['data-factory']);
         $scope.currentIn = index;
         $scope.data = $scope.alldata.slice(index * 11, (index+1)*11);
     }
+
     $scope.lastye = function() {
         if ($scope.currentIn == 0) {
 

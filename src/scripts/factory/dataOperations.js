@@ -20,11 +20,16 @@ dataOperation.prototype.init = function() {
             _this.$apply(function() {
                     _this.alldata = temp.slice(0);
 
-                    for (var m = 1; m < parseInt(_this.alldata.length / 12); m++) {
-                        _this.pagination.push(m);
+                       console.log("pagetion  "+_this.alldata.length+"  "+ _this.ye);
+
+                    for (var m = 1; m < parseInt(_this.alldata.length / 11); m++) {
+                          _this.pagination.push(m);
+
+
                     }
                     if (_this.alldata.length % 11 && _this.alldata.length > 11) {
                         _this.pagination.push(m);
+                          console.log(m);
                     }
 
                     _this.data = _this.alldata.slice(0, 11);
